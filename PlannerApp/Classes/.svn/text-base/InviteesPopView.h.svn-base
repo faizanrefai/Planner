@@ -1,0 +1,19 @@
+//
+//  InviteesPopView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/11/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
+@interface InviteesPopView : UIViewController<ABPeoplePickerNavigationControllerDelegate,ABPersonViewControllerDelegate>
+{
+	IBOutlet UILabel *name;
+}
+
+-(IBAction)Click:(id)sender;
+@end

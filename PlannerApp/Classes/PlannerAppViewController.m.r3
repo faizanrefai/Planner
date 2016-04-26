@@ -1,0 +1,643 @@
+//
+//  PlannerAppViewController.m
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/8/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "PlannerAppViewController.h"
+#import "StatusView.h"
+#import "PriorityView.h"
+
+@implementation PlannerAppViewController
+
+@synthesize table1,table2,view1,view2,view3,view4,taskbutton,workbtn;
+@synthesize personalbtn,healthbtn,familybtn,financebtn,donebtn;
+@synthesize taskname,addBtn;
+@synthesize tbl2Cell;
+/*
+// The designated initializer. Override to perform setup that is required before the view is loaded.
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+*/
+
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView {
+}
+*/
+
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	i=1;
+	
+	table1.editing=NO;
+	UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+	[searchBar sizeToFit];
+	
+	//searchBar.delegate = self;
+	searchBar.placeholder = @"Search..";
+	table2.tableHeaderView = searchBar;
+	UISearchBar *sBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
+	[sBar sizeToFit];
+	
+	//searchBar.delegate = self;
+	sBar.placeholder = @"Search..";
+	table1.tableHeaderView = sBar;
+	
+	
+//	table1.tableHeaderView = searchBar;
+	
+	personal_data=FALSE;
+	family_data=FALSE;
+	health_data=FALSE;
+	finance_data=FALSE;
+	work_data=FALSE;
+	
+	work_array=[[NSMutableArray alloc] initWithObjects:@"Admin",@"Finance",@"Personnel",@"Sales",nil];
+	personal_array=[[NSMutableArray alloc] initWithObjects:@"Relaxation",@"Vacation",@"Hobbies",@"Educational",@"Spiritual",nil];
+	family_array=[[NSMutableArray alloc]initWithObjects:@"Partner",@"Activities",nil];
+	health_array=[[NSMutableArray alloc]initWithObjects:@"Exercise",@"Nutrition",@"Medical",nil ];
+	finance_array=[[NSMutableArray alloc]initWithObjects:@"Banking",@"Bill Pay",@"Credit Cards",@"Taxes",@"Retirement",@"Saving",nil];
+	
+	[table1 reloadData];
+	workbtn =[[UIButton alloc] init];
+	workbtn.frame=CGRectMake(0, 320, 50, 40);
+	[workbtn setTitle:@"Work" forState:UIControlStateNormal];
+	[workbtn addTarget:self action:@selector(clickOnWork:) forControlEvents:UIControlEventTouchUpInside];
+
+	
+	personalbtn = [[UIButton alloc]init];
+	personalbtn.frame=CGRectMake(0, 380, 90, 40);
+	[personalbtn setTitle:@"Personal" forState:UIControlStateNormal];
+	[personalbtn addTarget:self action:@selector(clickOnPersonal:) forControlEvents:UIControlEventTouchUpInside];
+	
+	familybtn = [[UIButton alloc]init];
+	familybtn.frame=CGRectMake(0, 430, 90, 40);
+	[familybtn setTitle:@"Family" forState:UIControlStateNormal];
+	[familybtn addTarget:self action:@selector(clickOnFamily:) forControlEvents:UIControlEventTouchUpInside];
+
+	
+	healthbtn = [[UIButton alloc]init];
+	healthbtn.frame=CGRectMake(0, 480, 90, 40);
+	[healthbtn setTitle:@"Health" forState:UIControlStateNormal];
+	[healthbtn addTarget:self action:@selector(clickOnHealth:) forControlEvents:UIControlEventTouchUpInside];
+
+	financebtn = [[UIButton alloc]init];
+	financebtn.frame=CGRectMake(0, 530, 90, 40);
+	[financebtn setTitle:@"Finance" forState:UIControlStateNormal];
+	[financebtn addTarget:self action:@selector(clickOnFinance:) forControlEvents:UIControlEventTouchUpInside];
+
+	donebtn = [[UIButton alloc]init];
+	donebtn.frame=CGRectMake(0, 580, 90, 40);
+	[donebtn setTitle:@"Done" forState:UIControlStateNormal];
+	[donebtn addTarget:self action:@selector(clickOnDone:) forControlEvents:UIControlEventTouchUpInside];
+
+	
+	
+}
+#pragma mark IBOutlet
+
+
+-(IBAction)taskbuttonClicked:(id)sender
+{
+	taskbutton.hidden=TRUE;
+	donebtn.hidden=FALSE;
+	workbtn.hidden=FALSE;
+	personalbtn.hidden=FALSE;
+	familybtn.hidden=FALSE;
+	healthbtn.hidden=FALSE;
+	financebtn.hidden=FALSE;
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationDelegate:self];
+	//[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:view3 cache:YES];
+	view3.frame=CGRectMake(650, 0, 128, 1024);
+	//workbtn=[[UIButton alloc]initWithFrame:CGRectMake(725,290, 20, 40)];
+	
+	[view3 addSubview:workbtn];
+	[view3 addSubview:personalbtn];
+	[view3 addSubview:familybtn];
+	[view3 addSubview:healthbtn];
+	[view3 addSubview:financebtn];
+	[view3 addSubview:donebtn];
+	//[view4 removeFromSuperview];
+	[UIView commitAnimations];
+	
+}
+-(IBAction)clickOnWork:(id)sender
+{
+	personal_data=FALSE;
+	family_data=FALSE;
+	health_data=FALSE;
+	finance_data=FALSE;
+	work_data=TRUE;
+	[table1 reloadData];
+}
+
+-(IBAction)clickOnPersonal:(id)sender
+{
+	//personal_data=FALSE;
+	work_data=FALSE;
+
+	family_data=FALSE;
+	health_data=FALSE;
+	finance_data=FALSE;
+	personal_data=TRUE;
+	[table1 reloadData];
+}
+
+
+-(IBAction)clickOnFamily:(id)sender
+{
+	work_data=FALSE;
+
+	personal_data=FALSE;
+	//family_data=FALSE;
+	health_data=FALSE;
+	finance_data=FALSE;
+	family_data=TRUE;
+	[table1 reloadData];
+}
+
+
+-(IBAction)clickOnHealth:(id)sender
+{
+	work_data=FALSE;
+
+	personal_data=FALSE;
+	family_data=FALSE;
+	//health_data=FALSE;
+	finance_data=FALSE;
+	health_data=TRUE;
+	[table1 reloadData];
+}
+
+-(IBAction)clickOnFinance:(id)sender
+{
+	work_data=FALSE;
+
+	personal_data=FALSE;
+	family_data=FALSE;
+	health_data=FALSE;
+	//finance_data=FALSE;
+	finance_data=TRUE;
+	[table1 reloadData];
+}
+
+
+-(IBAction)clickOnDone:(id)sender
+{
+	taskbutton.hidden=FALSE;
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationDelegate:self];
+	
+	donebtn.hidden=TRUE;
+	workbtn.hidden=TRUE;
+	personalbtn.hidden=TRUE;
+	familybtn.hidden=TRUE;
+	healthbtn.hidden=TRUE;
+	financebtn.hidden=TRUE;
+	view3.frame=CGRectMake(718, 0, 43, 1024);
+}
+
+-(IBAction)clickOnaddBtn:(id)sender
+{
+	i++;
+	[table2 reloadData];
+}
+
+
+-(IBAction)clickOnstatusBtn:(id)sender
+{
+	UITableViewCell *clickedCell = (UITableViewCell *)[[sender superview] superview];
+	NSIndexPath *clickedButtonPath = [table2 indexPathForCell:clickedCell];
+	int row=clickedButtonPath.section;
+	NSLog(@"Row %d",row);
+	statusBtn.tag=row;
+	NSString *str_row=[NSString stringWithFormat:@"%d",row];
+	[[NSUserDefaults standardUserDefaults] setValue:str_row forKey:@"str_row"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+	
+		btn=(UIButton *)sender;
+	
+
+	if(!isStatus) {
+        StatusView *status = [[StatusView alloc] initWithNibName:@"StatusView" bundle:nil];
+		[status setParent:self];
+
+        popover = [[UIPopoverController alloc] initWithContentViewController:status];
+        popover.delegate = self;
+	//	NSLog(@"%d",i);
+		if(i == 1)
+		{
+		[popover presentPopoverFromRect:CGRectMake(268,60,100,100) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+		}
+		else if(i>1)
+		{
+			[popover presentPopoverFromRect:CGRectMake(268,(10*i)+60,100,100) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+
+		}
+		isStatus = YES;
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self
+         selector:@selector(dismissPopOverViewHome:)
+         name:@"dismissPopOverViewHome"
+         object:popover.contentViewController];
+    }
+    else
+    {
+        [popover dismissPopoverAnimated:YES];
+        isStatus = NO;
+    }
+	
+}
+
+-(void)dismissPopOverViewHome:(id)sender
+{
+    [popover dismissPopoverAnimated:YES];
+    isStatus = NO;
+}
+
+-(void)dismissPopOverViewHome2:(id)sender
+{
+    [popover2 dismissPopoverAnimated:YES];
+    isPriority = NO;
+}
+
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+	if(popoverController == popover)
+	{
+    if(!isStatus) {
+        isStatus = YES;
+    }
+    else {
+        isStatus = NO;
+    }
+	}
+	else {
+		if(!isPriority) {
+			isPriority = YES;
+		}
+		else {
+			isPriority = NO;
+		}
+		
+	}
+
+}
+
+-(IBAction)clickOnpriorityBtn:(id)sender
+{
+	if(!isPriority) {
+        PriorityView *priority = [[PriorityView alloc] initWithNibName:@"PriorityView" bundle:nil];
+		
+        popover2 = [[UIPopoverController alloc] initWithContentViewController:priority];
+        popover2.delegate = self;
+		//NSLog(@"%d",i);
+		if(i == 1)
+		{
+			[popover2 presentPopoverFromRect:CGRectMake(280,60,100,100) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+		}
+		else if(i>1)
+		{
+			[popover2 presentPopoverFromRect:CGRectMake(280,(10*i)+60,100,100) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+			
+		}
+		isPriority = YES;
+        [[NSNotificationCenter defaultCenter] 
+         addObserver:self
+         selector:@selector(dismissPopOverViewHome2:)
+         name:@"dismissPopOverViewHome2"
+         object:popover2.contentViewController];
+    }
+    else
+    {
+        [popover2 dismissPopoverAnimated:YES];
+        isPriority = NO;
+    }
+	
+}
+
+
+-(void)CallMethod:(UIImage *)image
+{
+	
+	NSLog(@"%d",btn.tag);
+	[btn setImage:image forState:UIControlStateNormal];
+}
+
+
+-(IBAction)clickOnEditBtn:(id)sender
+{
+	if(self.editing)
+	{ 
+		[super setEditing:NO animated:NO]; 
+		[self.table1 setEditing:NO animated:NO];
+		[self.table1 reloadData];
+		[editBtn setTitle:@"Edit" forState:UIControlStateNormal];
+		//self.navigationItem.leftBarButtonItem.enabled=TRUE;
+		
+	}
+	else
+	{
+		[super setEditing:YES animated:YES]; 
+		[self.table1 setEditing:YES animated:YES];
+		[self.table1 reloadData];
+		[editBtn setTitle:@"Done" forState:UIControlStateNormal];
+		
+		//[self.navigationItem.rightBarButtonItem setStyle:UIBarButtonItemStylePlain];
+		//self.navigationItem.leftBarButtonItem.enabled=TRUE;
+		
+	}
+}
+
+
+#pragma mark tableMethods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+{
+	if (tableView==table1)
+	{
+		return 1;
+	}
+	else
+	{
+		return i;
+	}
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	if(tableView==table1)
+	{
+		if(personal_data == TRUE)
+		{
+			return [personal_array count];
+		}
+		else if(family_data ==TRUE)
+		{
+			return [family_array count];
+		}
+		else if(health_data == TRUE)
+		{
+			return [health_array count];
+		}
+		else if(finance_data ==TRUE)
+		{
+			return [finance_array count];
+		}
+		else if(work_data == TRUE)
+		{
+			return [work_array count];
+		}
+
+		else
+		{
+		return [work_array count];
+		}
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *cellid=@"cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
+
+	if(tableView == table1)
+	{
+				
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellid] autorelease];
+	}
+				
+	// Set up the cell...
+	
+		if(personal_data == TRUE)
+		{
+			cell.textLabel.text=[personal_array objectAtIndex:indexPath.row];
+		}
+		else if (family_data == TRUE)
+		{
+			cell.textLabel.text=[family_array objectAtIndex:indexPath.row];
+		}
+		else if(health_data ==TRUE)
+		{
+			cell.textLabel.text=[health_array objectAtIndex:indexPath.row];
+		}
+		else if(finance_data ==TRUE)
+		{
+			cell.textLabel.text=[finance_array objectAtIndex:indexPath.row];
+		}
+		else if(work_data ==TRUE)
+		{
+			cell.textLabel.text=[work_array objectAtIndex:indexPath.row];
+		}
+
+		else
+		{
+		cell.textLabel.text=[work_array objectAtIndex:indexPath.row];
+		}		
+		
+		
+	    return cell;
+	}
+	
+	
+	else if(tableView == table2)
+	{
+//		static NSString *CustomCellIdentifier = @"CustomCellIdentifier ";
+//		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+//		if (cell == nil) 
+//		{ 
+			[[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:self options:nil];
+			cell=self.tbl2Cell;
+			self.tbl2Cell=nil;
+//		}
+
+		
+		NSString *str = [[NSUserDefaults standardUserDefaults]valueForKey:@"strimage"];
+		//NSLog(@"%d");
+		NSString *str_key = [[NSUserDefaults standardUserDefaults]valueForKey:@"str_row"];
+		if(str_key == nil)
+		{
+			NSLog(@"EMPTY");
+		}
+		else
+		{
+		dic=[[NSMutableDictionary alloc]init];
+		[dic setObject:str forKey:str_key];
+		
+			NSLog(@"Dictionary %@",dic);
+			//int k=[dic count];
+			NSString *row =[NSString stringWithFormat:@"%d",indexPath.row];
+			
+			NSLog(@"str_key %d",indexPath.row);
+							
+			if(row == str_key)
+				{
+					
+				}
+			
+
+		}
+
+		
+
+		
+		return cell;
+		
+	}
+//
+	
+	
+	
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	if(tableView == table1)
+	{
+		rowSelected =TRUE;
+	}
+	if(tableView == table2)
+	{
+		
+	}
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(tableView == table1)
+	{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source.
+		if(work_data ==TRUE)
+		{
+			[work_array removeObjectAtIndex:indexPath.row];
+			[table1 reloadData];
+		}
+		else if(personal_data == TRUE)
+		{
+			[personal_array removeObjectAtIndex:indexPath.row];
+			[table1 reloadData];
+		}
+		
+		else if(family_data == TRUE)
+		{
+			[family_array removeObjectAtIndex:indexPath.row];
+			[table1 reloadData];
+		}
+		else if(health_data == TRUE)
+		{
+			[health_array removeObjectAtIndex:indexPath.row];
+			[table1 reloadData];
+		}
+		else if(finance_data == TRUE)
+		{
+			[finance_array removeObjectAtIndex:indexPath.row];
+			[table1 reloadData];
+		}
+		
+		
+		
+    }   
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+	{
+		
+	}
+	}
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+	return YES;
+}
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
+{
+	if(tableView ==table1)
+	{
+		if(work_data == TRUE)
+		{
+			NSString *item = [[work_array objectAtIndex:sourceIndexPath.row] retain];
+			[work_array removeObject:item];
+			[work_array insertObject:item atIndex:destinationIndexPath.row];
+			[item release];
+		}
+		if(personal_data == TRUE)
+		{
+			NSString *item = [[personal_array objectAtIndex:sourceIndexPath.row] retain];
+			[personal_array removeObject:item];
+			[personal_array insertObject:item atIndex:destinationIndexPath.row];
+			[item release];
+		}
+		if(family_data ==TRUE)
+		{
+			NSString *item = [[family_array objectAtIndex:sourceIndexPath.row] retain];
+			[family_array removeObject:item];
+			[family_array insertObject:item atIndex:destinationIndexPath.row];
+			[item release];
+		}
+		if(health_data ==TRUE)
+		{
+			NSString *item = [[health_array objectAtIndex:sourceIndexPath.row] retain];
+			[health_array removeObject:item];
+			[health_array insertObject:item atIndex:destinationIndexPath.row];
+			[item release];
+		}
+		if(finance_data == TRUE)
+		{
+			NSString *item = [[finance_array objectAtIndex:sourceIndexPath.row] retain];
+			[finance_array removeObject:item];
+			[finance_array insertObject:item atIndex:destinationIndexPath.row];
+			[item release];
+		}
+	}
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+
+#pragma mark memory dealloc
+
+// Override to allow orientations other than the default portrait orientation.
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+@end

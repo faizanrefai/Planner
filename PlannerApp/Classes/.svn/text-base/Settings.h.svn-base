@@ -1,0 +1,19 @@
+//
+//  Settings.h
+//  PlannerApp
+//
+//  Created by Openxcell on 2/10/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "PlannerAppAppDelegate.h"
+#import "LocationsAlerts.h"
+#import "TabOrderController.h"
+@interface Settings : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    
+    IBOutlet UITableView *tblSettings;
+    PlannerAppAppDelegate *appdel;
+}
+
+@end

@@ -1,0 +1,22 @@
+//
+//  StatusPopView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/11/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface StatusPopView : UITableViewController 
+{
+	NSMutableArray *imageArray;
+	NSMutableArray *array;
+	IBOutlet UITableViewCell *tbcell;
+	IBOutlet UILabel *name;
+	IBOutlet UIImageView *imageV;
+}
+@property (nonatomic,retain)IBOutlet UITableViewCell *tbcell;
+
+@end

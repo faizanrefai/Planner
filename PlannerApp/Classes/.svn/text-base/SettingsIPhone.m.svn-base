@@ -1,0 +1,227 @@
+//
+//  SettingsIPhone.m
+//  PlannerApp
+//
+//  Created by Openxcell on 2/22/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "SettingsIPhone.h"
+#import "SyncSubViewIPhone.h"
+#import "LocationAlertsIPhone.h"
+#import "TabOrderControllerIphone.h"
+#define FONT_SIZE 14.0f
+#define CELL_CONTENT_WIDTH 320.0f
+#define CELL_CONTENT_MARGIN 60.0f
+@implementation SettingsIPhone
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.title=@"Settings";
+    appdel=(PlannerAppAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return 6;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section==3){
+        return 70;
+    }
+    else
+        return 44;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    if(section==3){
+        return 2;
+    }
+    // Return the number of rows in the section.
+    else
+        return 1;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section==3){
+        return @"Sorting";
+        //return @"Last Up";
+    }
+    else{
+        return @"";
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Configure the cell...
+    if(indexPath.section==0){
+        cell.textLabel.text=@"Sync Settings";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    if(indexPath.section==1){
+        cell.textLabel.text=@"Tab Order";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==2){
+        cell.textLabel.text=@"Location Alerts";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==3){
+        if(indexPath.row==0){
+            NSString *text=@"Task Setting by Priority control";
+            UILabel *txtViewDescription=[[UILabel alloc]init];
+            [txtViewDescription setBackgroundColor:[UIColor clearColor ]];
+            CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+            CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            txtViewDescription.numberOfLines=0;
+            txtViewDescription.font=[UIFont fontWithName:@"Helvetica-Bold" size:16];
+            
+            [txtViewDescription setFrame:CGRectMake(5, 15, CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), MAX(size.height-60, 40.0f))];
+            txtViewDescription.text = text;
+            
+            [cell.contentView addSubview:txtViewDescription];
+            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+            cell.accessoryView = switchview;
+            [switchview release];
+            
+            
+        }
+        if(indexPath.row==1){
+            
+            NSString *text=@"Task Setting by Status control";
+            UILabel *txtViewDescription=[[UILabel alloc]init];
+            [txtViewDescription setBackgroundColor:[UIColor clearColor ]];
+            CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+            CGSize size = [text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            txtViewDescription.numberOfLines=0;
+            txtViewDescription.font=[UIFont fontWithName:@"Helvetica-Bold" size:16];
+            
+            [txtViewDescription setFrame:CGRectMake(5, 15, CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), MAX(size.height-60, 40.0f))];
+            txtViewDescription.text = text;
+            
+            [cell.contentView addSubview:txtViewDescription];
+            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+            cell.accessoryView = switchview;
+            [switchview release];
+            
+            
+        }
+        
+    }
+    if(indexPath.section==4){
+        cell.textLabel.text=@"Background Colour";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==5){
+        cell.textLabel.text=@"Push Notification";
+        UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+        cell.accessoryView = switchview;
+        [switchview release];
+        
+    }
+    return cell;
+}
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+    if(indexPath.section==0 || indexPath.section==4){
+        if(indexPath.section==4)
+            appdel.isColor=TRUE;
+        else
+            appdel.isColor=FALSE;
+        SyncSubViewIPhone *objSub=[[SyncSubViewIPhone alloc]initWithNibName:@"SyncSubView" bundle:nil ];
+        [self.navigationController pushViewController:objSub animated:YES];
+        [objSub release];
+    }
+	if(indexPath.section==1){
+        TabOrderControllerIphone *objTab=[[TabOrderControllerIphone alloc]initWithNibName:@"TabOrderControllerIphone" bundle:nil];
+        [self.navigationController pushViewController:objTab animated:YES];
+        [objTab release];
+    }
+	
+    if(indexPath.section==2){
+        LocationAlertsIPhone *objLocationAlert=[[LocationAlertsIPhone alloc]initWithNibName:@"LocationAlertsIPhone" bundle:nil];
+        [self.navigationController pushViewController:objLocationAlert animated:YES];
+        [objLocationAlert release];
+    }
+    
+    
+}
+
+@end

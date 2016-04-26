@@ -1,0 +1,21 @@
+//
+//  StatusView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/9/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "PlannerAppViewController.h"
+
+@class PlannerAppViewController;
+@interface StatusView : UITableViewController 
+{
+	PlannerAppViewController *planner;
+	NSMutableArray *statusArray;
+	NSMutableArray *imageArray;
+	BOOL flagvalue;
+}
+
+@end

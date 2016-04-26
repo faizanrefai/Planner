@@ -1,0 +1,205 @@
+//
+//  PlannerAppViewController.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/8/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import "StatusView.h"
+#import "PriorityView.h"
+#import "TapView.h"
+#import "InfoViewController.h"
+#import "ProgressViewController.h"
+#import "PlannerAppAppDelegate.h"
+#import "SyncView.h"
+#import "TKCalendarMonthView.h"
+#import "FbGraph.h"
+#import "JSONParser.h"
+
+@interface PlannerAppViewController : UIViewController <TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource,UITableViewDelegate,UITableViewDataSource,UIPopoverControllerDelegate,MFMailComposeViewControllerDelegate,UIScrollViewDelegate,UIWebViewDelegate,UITextFieldDelegate>
+{
+    IBOutlet UITableViewCell *category_cell;
+	int k;
+	MFMailComposeViewController *mail;
+	PlannerAppAppDelegate *appdel;
+	BOOL personal_data;
+	BOOL health_data;
+	BOOL family_data;
+	BOOL finance_data;
+	BOOL work_data;
+    BOOL share_data;
+	BOOL urgent_data;
+    BOOL shopping_data;
+	BOOL rowSelected;
+	
+	IBOutlet UISegmentedControl *segment;
+	
+	IBOutlet UIView *view1;
+	IBOutlet UIView *view2;
+	IBOutlet UIView *view3;
+	IBOutlet UIView *view4;
+	IBOutlet UIView *view_cal;
+	IBOutlet UITableView *table1;
+	IBOutlet UITableView *table2;
+	IBOutlet UIButton *taskbutton;
+	IBOutlet UIButton *editBtn;
+	
+	
+	UIButton *workbtn;
+	UIButton *personalbtn;
+	UIButton *healthbtn;
+	UIButton *familybtn;
+	UIButton *financebtn;
+    UIButton *sharedbtn;
+    UIButton *urgentbtn;
+    UIButton *shoppingbtn;
+	//UIButton *donebtn;
+	
+	NSMutableArray *work_array;
+	NSMutableArray *personal_array;
+	NSMutableArray *family_array;
+	NSMutableArray *health_array;
+	NSMutableArray *finance_array;
+    NSMutableArray *share_array;
+    NSMutableArray *urgent_array;
+    NSMutableArray *shop_array;
+	
+	NSMutableArray *array_tbl2;
+	NSMutableArray *array_demo;
+	IBOutlet UILabel *taskname;
+	
+	
+	IBOutlet UITableViewCell *tbl2Cell;
+	IBOutlet UIButton *statusBtn;
+	IBOutlet UIButton *priorityBtn;
+	IBOutlet UIButton *addBtn;
+	
+	IBOutlet UIScrollView *scroll;
+	
+	UIPopoverController *popover;
+	UIPopoverController *popover2;
+	UIPopoverController *popover_tap;
+	UIPopoverController *popover_sync;
+	BOOL isStatus;
+	BOOL isPriority;
+	BOOL isTap;
+	UIButton *btn;
+	
+	NSMutableDictionary *dic;
+    NSMutableArray *arr_maintask;
+    
+    FbGraph *fbGraph;
+    
+	//we'll use this to store a feed post (when you press 'post me/feed').
+	//when you press delete me/feed this is the post that's deleted
+	NSString *feedPostId;
+    
+    int sectionOUt;
+    int row;
+    int index;
+    int i;
+    
+    NSMutableDictionary *dictForRows;
+    CGFloat animatedDistance;
+    
+    NSMutableArray *arrayOfSection;
+    
+	IBOutlet UITextField *txt;
+	NSMutableDictionary *dic_txt;
+	IBOutlet UITableViewCell *tvcell;
+	
+	
+	NSMutableArray *arr_tag;
+	
+	int tagbtn;
+    NSMutableDictionary *dictSection;
+    int sectioncell;
+    int rowcell;
+    UITextField *textHeader;
+    NSMutableDictionary *dic_image;
+    NSMutableDictionary *dic_priorityimage;
+    UIButton *btnpriority;
+    
+    IBOutlet UITextField *txt_category;
+
+    NSMutableArray *arr2;
+    NSString *str_scid;
+    NSString *str_mainscid;
+    
+    BOOL insertFlag;
+    BOOL deleteFlag;
+    BOOL decideFlag;
+	
+}
+@property (nonatomic,retain) IBOutlet UITableViewCell *category_cell;
+@property (nonatomic, retain) FbGraph *fbGraph;
+@property (nonatomic, retain) NSString *feedPostId;
+@property (nonatomic,retain)UIPopoverController *popover_tap;
+@property (nonatomic,retain)IBOutlet UIView *view1;
+@property (nonatomic,retain)IBOutlet UIView *view2;
+@property (nonatomic,retain)IBOutlet UIView *view3;
+@property (nonatomic,retain)IBOutlet UIView *view4;
+@property (nonatomic,retain)IBOutlet UITableView *table1;
+@property (nonatomic,retain)IBOutlet UITableView *table2;
+@property (nonatomic,retain)IBOutlet UIButton *taskbutton;
+@property (nonatomic,retain)UIButton *workbtn;
+@property (nonatomic,retain)UIButton *personalbtn;
+@property (nonatomic,retain)UIButton *healthbtn;
+@property (nonatomic,retain)UIButton *familybtn;
+@property (nonatomic,retain)UIButton *financebtn;
+//@property (nonatomic,retain)UIButton *donebtn;  
+
+@property (nonatomic,retain)UILabel *taskname;
+
+
+@property (nonatomic,retain)IBOutlet UITableViewCell *tbl2Cell;
+@property (nonatomic,retain)IBOutlet UIButton *addBtn;
+- (NSString *) base64Encoding;
+-(void)tap;
+-(void)CallMethod:(UIImage *)image;
+-(void)CallMethodPriority:(UIImage *)image;
+-(void)getMeButtonPressed;
+-(IBAction)actionPressed:(id)sender;
+-(IBAction)clickOnEditBtn:(id)sender;
+
+-(IBAction)taskbuttonClicked:(id)sender;
+-(IBAction)clickOnWork:(id)sender;
+-(IBAction)clickOnPersonal:(id)sender;
+-(IBAction)clickOnFamily:(id)sender;
+-(IBAction)clickOnHealth:(id)sender;
+-(IBAction)clickOnFinance:(id)sender;
+-(IBAction)clickOnShare:(id)sender;
+-(IBAction)clickonUrgent:(id)sender;
+-(IBAction)clickOnShop:(id)sender;
+
+//-(IBAction)clickOnDone:(id)sender;
+-(IBAction)clickOnaddBtn:(id)sender;
+-(IBAction)clickOnstatusBtn:(id)sender event:(id)event;
+-(IBAction)clickOnpriorityBtn:(id)sender event:(id)event;
+-(IBAction)clickOnSettings:(id)sender;
+- (IBAction)tapDetected:(UIGestureRecognizer *)sender;
+-(IBAction)clickOnProgress:(id)sender;
+-(IBAction)clickOnInfo:(id)sender;
+-(IBAction)hidePopView:(id)sender;
+
+-(IBAction)clickOnSync:(id)sender;
+-(IBAction)clickOnMail:(id)sender;
+-(IBAction)changeSegment;
+-(IBAction)btninDent:(id)sender;
+-(IBAction)btnAdd:(id)sender;
+-(IBAction)btnOutDent:(id)sender;
+
+-(void)JSON;
+-(void)JSON_insertcategory;
+-(void)JSON_deletecategory;
+-(void)JSON_maintaskInsert;
+-(void)JSON_maintaskRetrive;
+-(void)JSON_maintaskDelete;
+
+
+
+@end
+

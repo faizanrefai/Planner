@@ -1,0 +1,337 @@
+//
+//  RepeatsPopView.m
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/10/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "RepeatsPopView.h"
+#import "Repeat_days.h"
+
+
+@implementation RepeatsPopView
+@synthesize repeat_text,start_text,after_text,on_text;
+
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    picker_text.hidden=TRUE;
+	self.title = @"Repeats";
+    day_array=[[NSMutableArray alloc] initWithObjects:@"Daily",@"Every WeekDay(Mon-Fri)",@"Every Mon.,Wed.,Fri.",@"Every Tues. and Thurs..",@"Weekly",@"Monthly",@"Yearly",nil];
+	btn_mon.selected = TRUE;
+	btn_tue.selected = TRUE;
+	btn_wed.selected = TRUE;
+	btn_thu.selected = TRUE;
+	btn_fri.selected = TRUE;
+	btn_sat.selected = TRUE;
+	btn_sun.selected = TRUE;
+	self.contentSizeForViewInPopover=CGSizeMake(320, 460);
+	picker.hidden =TRUE;
+	tool.hidden = TRUE;
+	NSDate *now = [NSDate date];
+	
+    [picker setDate:now animated:YES];
+	
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{	
+    if(textField == repeat_text)
+	{
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        picker_text.hidden=TRUE;
+
+		[repeat_text resignFirstResponder];
+		if(!isRepeat) {
+			Repeat_days *days = [[Repeat_days alloc] initWithNibName:@"Repeat_days" bundle:nil];
+			
+			[days setParent:self];
+			
+			pop_repeat = [[UIPopoverController alloc] initWithContentViewController:days];
+			pop_repeat.delegate = self;
+			[pop_repeat presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+			
+			isRepeat = YES;
+			[[NSNotificationCenter defaultCenter] 
+			 addObserver:self
+			 selector:@selector(dismissPopOverViewHome:)
+			 name:@"dismissPopOverViewHome"
+			 object:pop_repeat.contentViewController];
+			
+		}
+		else
+		{
+			[pop_repeat dismissPopoverAnimated:YES];
+			isRepeat = NO;
+		}
+        }
+        else
+        {
+            [repeat_text resignFirstResponder];
+
+            k=1;
+            picker_text.hidden=FALSE;
+            tool.hidden=FALSE;
+        }
+    }
+        
+    
+	else if(textField == start_text)
+	{
+        k=2;
+        picker_text.hidden=TRUE;
+		tool.hidden = FALSE;
+		picker.hidden=FALSE;
+		[textField resignFirstResponder];
+	}
+	
+	
+	
+}
+    
+    
+- (void)textFieldDidEndEditing:(UITextField *)textField 
+{
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+	tool.hidden = YES;
+	picker.hidden=YES;
+	[textField resignFirstResponder];
+	//[to resignFirstResponder];
+	return YES;	
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	//[to resignFirstResponder];
+	return NO;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	tool.hidden =YES;
+	picker.hidden=YES;
+	[start_text resignFirstResponder];
+}
+-(void)dismissPopOverViewHome:(id)sender
+{
+    [pop_repeat dismissPopoverAnimated:YES];
+    isRepeat = NO;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    if(!isRepeat) {
+        isRepeat = YES;
+    }
+    else {
+        isRepeat = NO;
+    }
+}
+
+-(IBAction)showdate:(id)sender
+{
+	[start_text resignFirstResponder];
+    NSDate *selected = [picker date];
+    self.start_text.text = [NSString stringWithFormat:@"%@",selected];
+}
+
+
+-(void)CallMehtod:(NSString *)str{
+	
+	NSLog(@"str %@",str);
+	
+	[repeat_text setText:str];
+	
+}
+#pragma mark IBOutlet
+
+-(IBAction)clickOnDone:(id)sender
+{
+	[start_text resignFirstResponder];
+    [repeat_text resignFirstResponder];
+    if(k==1)
+    {
+        tool.hidden=TRUE;
+        picker_text.hidden=TRUE;
+    }
+    else if(k == 2)
+    {
+        tool.hidden = TRUE;
+        picker.hidden = TRUE;
+    }
+	
+}
+
+-(IBAction)neverClicked:(id)sender
+{
+	[btn_never setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_after setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_on setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+
+}
+
+-(IBAction)onClicked:(id)sender
+{
+	
+		[btn_never setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+		[btn_on setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+		[btn_after setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+
+}
+
+-(IBAction)afterClicked:(id)sender
+{
+	[btn_never setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_on setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_after setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+}
+
+
+-(IBAction)monClicked:(id)sender
+{
+	if(btn_mon.selected == TRUE)
+	{
+		btn_mon.selected = FALSE;
+		[btn_mon setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_mon.selected == FALSE)
+	{
+		btn_mon.selected = TRUE;
+		[btn_mon setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+-(IBAction)tueClicked:(id)sender
+{
+	if(btn_tue.selected == TRUE)
+	{
+		btn_tue.selected = FALSE;
+		[btn_tue setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_tue.selected == FALSE)
+	{
+		btn_tue.selected = TRUE;
+		[btn_tue setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+
+-(IBAction)wedClicked:(id)sender
+{
+	if(btn_wed.selected == TRUE)
+	{
+		btn_wed.selected = FALSE;
+		[btn_wed setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_wed.selected == FALSE)
+	{
+		btn_wed.selected = TRUE;
+		[btn_wed setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+
+-(IBAction)thuClicked:(id)sender
+{
+	if(btn_thu.selected == TRUE)
+	{
+		btn_thu.selected = FALSE;
+		[btn_thu setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_thu.selected == FALSE)
+	{
+		btn_thu.selected = TRUE;
+		[btn_thu setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+
+
+-(IBAction)friClicked:(id)sender
+{
+	if(btn_fri.selected == TRUE)
+	{
+		btn_fri.selected = FALSE;
+		[btn_fri setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_fri.selected == FALSE)
+	{
+		btn_fri.selected = TRUE;
+		[btn_fri setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+
+-(IBAction)satClicked:(id)sender
+{
+	if(btn_sat.selected == TRUE)
+	{
+		btn_sat.selected = FALSE;
+		[btn_sat setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_sat.selected == FALSE)
+	{
+		btn_sat.selected = TRUE;
+		[btn_sat setImage:[UIImage imageNamed:@"uncheck.png"]forState:UIControlStateNormal];
+	}
+}
+
+-(IBAction)sunClicked:(id)sender
+{
+	if(btn_sun.selected == TRUE)
+	{
+		btn_sun.selected = FALSE;
+		[btn_sun setImage:[UIImage imageNamed:@"checksymbol.png"] forState:UIControlStateNormal];
+	}
+	else if(btn_sun.selected == FALSE)
+	{
+		btn_sun.selected = TRUE;
+		[btn_sun setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+	}
+}
+
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+	
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
+	
+	return [day_array count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	
+	return [day_array objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component 
+{
+	NSString *str=[NSString stringWithFormat:@"%@",[day_array objectAtIndex:row]];
+    repeat_text.text=str;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+@end

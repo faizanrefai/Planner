@@ -1,0 +1,23 @@
+//
+//  LoginPage.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/20/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "PlannerAppViewController.h"
+#import "RegisterPage.h"
+#import "JSONParser.h"
+@interface LoginPage : UIViewController<UITextFieldDelegate>
+{
+	IBOutlet UITextField *txt_username;
+    IBOutlet UITextField *txt_password;
+    
+}
+-(IBAction)ClickOnLogin:(id)sender;
+-(IBAction)ClickOnRegister:(id)sender;
+-(IBAction)ClickOnFacebook:(id)sender;
+-(void)JSON;
+@end

@@ -1,0 +1,83 @@
+//
+//  RegisterPage.m
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 3/2/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "RegisterPage.h"
+
+@implementation RegisterPage
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
+-(void)JSON
+{
+    NSString *str=[NSString stringWithFormat:@"http://openxcellaus.info/emainder/user_action.php?action=registration&username=%@&password=%@&email=%@",txt_username.text,txt_pwd.text,txt_emailid.text];
+
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:str]];
+    JSONParser *parser = [[JSONParser alloc] initWithRequestForThread:request sel:@selector(searchResult:) andHandler:self];
+    NSLog(@"%@",parser);
+	
+}
+
+-(void)searchResult:(NSDictionary*)dictionary
+{
+    NSLog(@"%@",dictionary);
+
+}	
+
+-(IBAction)ClickOnRegister:(id)sender
+{
+    [self JSON];
+
+    LoginPage *log=[[LoginPage alloc]initWithNibName:@"LoginPage" bundle:nil];
+    [self.navigationController pushViewController:log animated:YES];
+
+}
+-(IBAction)ClickOnCancel:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+	return YES;
+}
+
+@end

@@ -1,0 +1,773 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes
+END
+InviteesPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InviteesPopView.xib
+END
+StatusPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusPopView.h
+END
+StatusPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusPopView.m
+END
+CustomCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/CustomCell.xib
+END
+LocationAlertsIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationAlertsIPhone.h
+END
+AddNewLocationIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocationIPhone.xib
+END
+CustomProgressCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/CustomProgressCell.xib
+END
+SubFolderPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SubFolderPopView.xib
+END
+LocationAlertsIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationAlertsIPhone.m
+END
+PlannerAppViewControllerIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewControllerIPhone.xib
+END
+AlertsPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AlertsPopView.xib
+END
+Repeat_days.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Repeat_days.h
+END
+TabOrderController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderController.xib
+END
+Progress_SubView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/Progress_SubView.xib
+END
+Repeat_days.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Repeat_days.m
+END
+LocationType.xib
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationType.xib
+END
+FbGraphFile.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraphFile.h
+END
+SyncSubView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubView.xib
+END
+StatusView.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusView.h
+END
+FbGraphFile.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraphFile.m
+END
+SyncSubView.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubView.h
+END
+LocationPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationPopView.h
+END
+StatusView.m
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusView.m
+END
+DelegatePopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/DelegatePopView.h
+END
+SyncSubView.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubView.m
+END
+AddNewLocation.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocation.xib
+END
+LocationPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationPopView.m
+END
+DelegatePopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/DelegatePopView.m
+END
+Settings.xib
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Settings.xib
+END
+InviteesPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InviteesPopView.h
+END
+ProgressViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/ProgressViewController.h
+END
+InviteesPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InviteesPopView.m
+END
+SyncView.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncView.h
+END
+ProgressViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/ProgressViewController.m
+END
+CustomCelliPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/CustomCelliPhone.xib
+END
+TapView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TapView.xib
+END
+SyncView.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncView.m
+END
+RegisterPage.xib
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RegisterPage.xib
+END
+AvailabilityPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AvailabilityPopView.xib
+END
+FolderPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderPopView.xib
+END
+RegisterPage.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RegisterPage.h
+END
+LocationAlertsIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationAlertsIPhone.xib
+END
+FolderPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderPopView.h
+END
+RegisterPage.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RegisterPage.m
+END
+PriorityPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityPopView.xib
+END
+InfoViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InfoViewController.h
+END
+FolderPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderPopView.m
+END
+PlannerAppViewController.m.mine
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewController.m.mine
+END
+InfoViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InfoViewController.m
+END
+LoginPage.xib
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LoginPage.xib
+END
+SettingsIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SettingsIPhone.h
+END
+TabOrderControllerIphone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderControllerIphone.xib
+END
+AlertsPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AlertsPopView.h
+END
+LoginPage.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LoginPage.h
+END
+ProgressViewControllerIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/ProgressViewControllerIPhone.h
+END
+Progress_SubView.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/Progress_SubView.h
+END
+SettingsIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SettingsIPhone.m
+END
+TabOrderControllerIphone.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderControllerIphone.h
+END
+StatusView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusView.xib
+END
+StatusCustomCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusCustomCell.xib
+END
+AlertsPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AlertsPopView.m
+END
+SyncViewIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncViewIPhone.h
+END
+LoginPage.m
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LoginPage.m
+END
+NotePopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/NotePopView.xib
+END
+ProgressViewControllerIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/ProgressViewControllerIPhone.m
+END
+Progress_SubView.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/Progress_SubView.m
+END
+LocationPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationPopView.xib
+END
+TabOrderControllerIphone.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderControllerIphone.m
+END
+SyncViewIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncViewIPhone.m
+END
+PlannerAppViewController.m.r3
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewController.m.r3
+END
+main.m
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/main.m
+END
+PlannerAppViewController.m.r6
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewController.m.r6
+END
+Settings.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Settings.h
+END
+Settings.m
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Settings.m
+END
+FolderView.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderView.h
+END
+LocationsAlerts.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationsAlerts.h
+END
+PriorityView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityView.xib
+END
+FolderView.m
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderView.m
+END
+LocationsAlerts.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationsAlerts.m
+END
+SyncSubViewIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubViewIPhone.xib
+END
+AvailabilityPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AvailabilityPopView.h
+END
+InfoViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/InfoViewController.xib
+END
+FbGraphResponse.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraphResponse.h
+END
+AvailabilityPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AvailabilityPopView.m
+END
+PlannerAppAppDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/planner/!svn/ver/30/PlannerApp%203%203/Classes/PlannerAppAppDelegate.h
+END
+FbGraphResponse.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraphResponse.m
+END
+SubFolderPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SubFolderPopView.h
+END
+PlannerAppAppDelegate.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppAppDelegate.m
+END
+ProgressViewControllerIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/ProgressViewControllerIPhone.xib
+END
+SubFolderPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SubFolderPopView.m
+END
+SyncViewIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncViewIPhone.xib
+END
+RepeatsPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RepeatsPopView.xib
+END
+FbGraph.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraph.h
+END
+RepeatsPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RepeatsPopView.h
+END
+FbGraph.m
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FbGraph.m
+END
+RepeatsPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/RepeatsPopView.m
+END
+AddNewLocation.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocation.h
+END
+ProgressViewController.xib
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/ProgressViewController.xib
+END
+PlannerAppViewController.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewController.h
+END
+AddNewLocation.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocation.m
+END
+FolderView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderView.xib
+END
+FolderCustomCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/FolderCustomCell.xib
+END
+LocationsAlerts.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationsAlerts.xib
+END
+SyncView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncView.xib
+END
+CategoryCustomCell.xib
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/CategoryCustomCell.xib
+END
+PlannerAppViewController.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/planner/!svn/ver/36/PlannerApp%203%203/Classes/PlannerAppViewController.m
+END
+PriorityView.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityView.h
+END
+TapView.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TapView.h
+END
+PriorityView.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityView.m
+END
+TapView.m
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TapView.m
+END
+SyncSubViewIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubViewIPhone.h
+END
+SyncSubViewIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SyncSubViewIPhone.m
+END
+Repeat_days.xib
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/Repeat_days.xib
+END
+PriorityPopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityPopView.h
+END
+SettingsIPhone.xib
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/SettingsIPhone.xib
+END
+AddNewLocationIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocationIPhone.h
+END
+PriorityPopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PriorityPopView.m
+END
+PlannerAppViewControllerIPhone.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewControllerIPhone.h
+END
+AddNewLocationIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/AddNewLocationIPhone.m
+END
+TabOrderController.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderController.h
+END
+PlannerAppViewControllerIPhone.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/PlannerAppViewControllerIPhone.m
+END
+LocationType.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationType.h
+END
+TabOrderController.m
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/TabOrderController.m
+END
+DelegatePopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/DelegatePopView.xib
+END
+LocationType.m
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/LocationType.m
+END
+NotePopView.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/NotePopView.h
+END
+NotePopView.m
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/NotePopView.m
+END
+StatusPopView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/planner/!svn/ver/29/PlannerApp%203%203/Classes/StatusPopView.xib
+END

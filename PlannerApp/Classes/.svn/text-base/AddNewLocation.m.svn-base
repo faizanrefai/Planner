@@ -1,0 +1,189 @@
+
+//  AddNewLocation.m
+//  PlannerApp
+//
+//  Created by Openxcell on 2/10/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "AddNewLocation.h"
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+@implementation AddNewLocation
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	appdel=(PlannerAppAppDelegate *)[[UIApplication sharedApplication] delegate];
+    array=[[NSArray alloc] initWithObjects:@"Type",@"Name",@"Address",@"Category",@"Distance",@"", nil];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+	
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+    return 6;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    cell.textLabel.text=[array objectAtIndex:indexPath.row];
+	
+    if(indexPath.row==0){
+        txtType=[[UITextField alloc]initWithFrame:CGRectMake(150, 10, 200, 44)];
+        txtType.delegate=self;
+        txtType.placeholder=@"Enter here";
+        txtType.tag=indexPath.row;
+        [cell.contentView addSubview:txtType];
+		
+    }
+    else if(indexPath.row==3){
+        txtCategory=[[UITextField alloc]initWithFrame:CGRectMake(150, 10, 200, 44)];
+        txtCategory.delegate=self;
+        txtCategory.placeholder=@"Enter here";
+        txtCategory.tag=indexPath.row;
+        [cell.contentView addSubview:txtCategory];
+    }
+	
+    else if(indexPath.row == 1)  
+	{
+		txt=[[UITextField alloc]initWithFrame:CGRectMake(150, 10, 200, 44)];
+		txt.delegate=self;
+		txt.placeholder=@"Enter here";
+		txt.tag=indexPath.row;
+		[cell.contentView addSubview:txt];
+    }
+	else if((indexPath.row == 2) || (indexPath.row == 4))
+	{
+		txtfield=[[UITextField alloc]initWithFrame:CGRectMake(150, 10, 200, 44)];
+		txtfield.delegate=self;
+		txtfield.placeholder=@"Enter here";
+		txtfield.tag=indexPath.row;
+		[cell.contentView addSubview:txtfield];
+		
+	}
+	else if(indexPath.row == 5)
+	{
+		btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+		[btn addTarget:self 
+				action:@selector(addLocation:)
+	  forControlEvents:UIControlEventTouchDown];
+		[btn setTitle:@"Add" forState:UIControlStateNormal];
+		btn.frame = CGRectMake(300, 255, 120.0, 35.0);
+		[tblLocation addSubview:btn];
+		
+	}
+	
+	
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	
+    // Configure the cell...
+    
+    return cell;
+}
+- (void)textFieldDidBeginEditing:(UITextField*)textField
+{
+    if(textField==txtType){
+        
+        [txt resignFirstResponder];
+		appdel.isColor=TRUE;
+        objLocatiobType=[[LocationType alloc]initWithNibName:@"LocationType" bundle:nil];
+        [objLocatiobType setParent:self];
+        popView = [[UIPopoverController alloc] initWithContentViewController:objLocatiobType];
+        popView.delegate = self;
+		
+        //NSLog(@"%d",i);
+        
+        
+        [popView presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+        
+        
+    }
+    if(textField==txtCategory){
+        [txtCategory resignFirstResponder];
+        appdel.isColor=FALSE;
+        objLocatiobType=[[LocationType alloc]initWithNibName:@"LocationType" bundle:nil];
+        [objLocatiobType setParent:self];
+        popView = [[UIPopoverController alloc] initWithContentViewController:objLocatiobType];
+        popView.delegate = self;
+        
+        //NSLog(@"%d",i);
+        
+        
+        [popView presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+    }
+}
+-(void)CallMehtod:(NSString *)str{
+    
+    NSLog(@"str %@",str);
+    if(appdel.isColor)
+		[txtType setText:str];
+    else
+        [txtCategory setText:str];
+    
+}
+-(IBAction)addLocation:(id)sender{
+    //[appdel.dict setObject:txtType.text forKey:@"LocationType"];
+	// [appdel.dict setObject:txtName.text forKey:@"LocationName"];
+	// [appdel.dict setObject:txtAddress.text forKey:@"LocationAddress"];
+	// [appdel.dict setObject:txtCategory.text forKey:@"LocationCategory"];
+    //[appdel.dict setObject:txtDistance.text forKey:@"LocationDist"];
+    NSLog(@"%@",appdel.dict);
+	
+    appdel.str=[NSString stringWithFormat:@"%@",txt.text];
+    [appdel.array addObject:appdel.dict];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return YES;
+}
+
+@end

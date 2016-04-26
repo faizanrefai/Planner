@@ -1,0 +1,205 @@
+//
+//  AlertsPopView.m
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/13/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "AlertsPopView.h"
+
+
+@implementation AlertsPopView
+
+// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+/*
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization.
+    }
+    return self;
+}
+*/
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+	self.contentSizeForViewInPopover=CGSizeMake(320, 460);
+	tool.hidden= TRUE;
+	picker.hidden = TRUE;
+	NSDate *now = [NSDate date];
+	
+    [picker setDate:now animated:YES];
+	
+	
+}
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	tool.hidden = FALSE;
+	picker.hidden = FALSE;
+	
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField 
+{
+	[textField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+	tool.hidden = YES;
+	picker.hidden=YES;
+	[textField resignFirstResponder];
+	//[to resignFirstResponder];
+	return YES;	
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	//[to resignFirstResponder];
+	return NO;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	tool.hidden =YES;
+	picker.hidden=YES;
+	[date_text resignFirstResponder];
+}
+
+
+#pragma mark IBOutlet
+
+-(IBAction)clickOnNone:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+-(IBAction)clickOn5min:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+-(IBAction)clickOn15min:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+
+-(IBAction)clickOn30min:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];	
+}
+-(IBAction)clickOn1hr:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+
+-(IBAction)clickOn1day:(id)sender
+{
+	[btn_rnone setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r5min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r15min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r30min setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1hr setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[btn_r1day setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+}
+
+-(IBAction)clickOnok:(id)sender
+{
+	[btn_ok setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[week setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[month setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+
+}
+-(IBAction)clickOnday:(id)sender
+{
+	[btn_ok setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[day setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[week setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[month setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+-(IBAction)clickOnweek:(id)sender
+{
+	[btn_ok setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[week setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+	[month setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+}
+-(IBAction)clickOnmonth:(id)sender
+{
+	[btn_ok setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[day setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[week setImage:[UIImage imageNamed:@"UnChecked.png"] forState:UIControlStateNormal];
+	[month setImage:[UIImage imageNamed:@"Checked.png"] forState:UIControlStateNormal];
+}
+
+-(IBAction)showdate:(id)sender
+{
+	[date_text resignFirstResponder];
+    NSDate *selected = [picker date];
+    date_text.text = [NSString stringWithFormat:@"%@",selected];
+}
+
+-(IBAction)clickOnDone:(id)sender
+{
+	[date_text resignFirstResponder];
+	tool.hidden = TRUE;
+	picker.hidden = TRUE;
+}
+
+
+/*
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations.
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+*/
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+@end

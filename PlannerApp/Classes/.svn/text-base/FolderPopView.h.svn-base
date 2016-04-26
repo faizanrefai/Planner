@@ -1,0 +1,22 @@
+//
+//  FolderPopView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/11/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface FolderPopView : UITableViewController 
+{
+	NSMutableArray *folderArray;
+	IBOutlet UITableViewCell *folder_cell;
+	IBOutlet UILabel *lbl;
+	IBOutlet UIButton *btn;
+}
+@property (nonatomic,retain) IBOutlet UITableViewCell *folder_cell;
+
+-(IBAction)clickOnButton:(id)sender;
+@end

@@ -1,0 +1,37 @@
+//
+//  TapView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/10/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "StatusPopView.h"
+#import "PriorityPopView.h"
+#import "RepeatsPopView.h"
+#import "DelegatePopView.h"
+#import "InviteesPopView.h"
+#import "FolderPopView.h"
+#import "AvailabilityPopView.h"
+#import "NotePopView.h"
+#import "SubFolderPopView.h"
+#import "LocationPopView.h"
+#import "LocationsAlerts.h"
+#import "AlertsPopView.h"
+#import "PlannerAppViewController.h"
+
+
+@interface TapView : UIViewController <UITableViewDelegate,UITableViewDelegate>
+{
+    IBOutlet UITableView *tbl;
+	NSMutableArray *array;
+	UIPopoverController * ABPopoverVC;
+	int i;
+    UIButton *deleteBtn;
+	PlannerAppViewController *plan;
+}
+-(IBAction)clickOnDone:(id)sender;
+-(IBAction)clickOnCancel:(id)sender;
+
+@end

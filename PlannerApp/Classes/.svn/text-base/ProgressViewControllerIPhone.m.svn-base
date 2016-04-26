@@ -1,0 +1,139 @@
+//
+//  ProgressViewControllerIPhone.m
+//  PlannerApp
+//
+//  Created by Openxcell on 2/23/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "ProgressViewControllerIPhone.h"
+
+@implementation ProgressViewControllerIPhone
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	UIBarButtonItem *doneButton=[[UIBarButtonItem alloc]initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+	
+	
+	[self.navigationItem setLeftBarButtonItem:doneButton];
+	array_sections=[[NSMutableArray alloc]initWithObjects:@"Completed",@"In Progress",@"No Action",@"Added",nil];
+	array_cmplt=[[NSMutableArray alloc] initWithObjects:@"Work",@"Personal",@"Family",@"Health",@"Finance",nil];
+	array_progress=[[NSMutableArray alloc] initWithObjects:@"Work",@"Personal",@"Family",@"Health",@"Finance",nil];
+	[tblprogress reloadData];
+    // Do any additional setup after loading the view from its nib.
+}
+-(IBAction)goBack:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:YES];
+	//[self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+	return YES;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return [array_sections count];
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    if(section == 0)
+	{
+		return [array_cmplt count];
+	}
+	else if(section == 1)
+	{
+		return [array_progress count];
+	}
+	else 
+	{
+		return [array_cmplt count];
+	}
+    
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section==0){
+        return @"Completed Tasks";
+        //return @"Last Up";
+    }
+	else if(section == 1)
+	{
+		return @"Tasks in Progress";
+	}
+    else if(section == 2){
+        return @"No Action";
+    }
+	else if(section == 3) {
+		return @"Added";
+	}
+    
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+	if(indexPath.section == 0)
+	{
+		cell.textLabel.text=[array_cmplt objectAtIndex:indexPath.row];
+	}
+	else if(indexPath.section == 1)
+	{
+		cell.textLabel.text=[array_progress objectAtIndex:indexPath.row];
+	}
+	else if(indexPath.section == 2)
+	{
+		cell.textLabel.text=[array_cmplt objectAtIndex:indexPath.row];
+	}
+	else if(indexPath.section == 3)
+	{
+		cell.textLabel.text=[array_cmplt objectAtIndex:indexPath.row];
+	}
+    
+  	
+    return cell;
+}
+
+
+@end

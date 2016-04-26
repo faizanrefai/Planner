@@ -1,0 +1,17 @@
+//
+//  NotePopView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/11/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface NotePopView : UIViewController {
+
+}
+-(IBAction)clickOnDone:(id)sender;
+
+@end

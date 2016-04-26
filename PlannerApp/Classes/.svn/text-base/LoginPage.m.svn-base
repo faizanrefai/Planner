@@ -1,0 +1,114 @@
+    //
+//  LoginPage.m
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/20/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "LoginPage.h"
+
+
+@implementation LoginPage
+ // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
+/*
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization.
+    }
+    return self;
+}
+*/
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    /*Facebook Application ID*/
+}
+-(void)JSON
+{
+    NSString *str=[NSString stringWithFormat:@"http://openxcellaus.info/emainder/user_action.php?action=login&username=%@&password=%@",txt_username.text,txt_password.text];   
+    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:str]];
+    JSONParser *parser = [[JSONParser alloc] initWithRequestForThread:request sel:@selector(searchResult:) andHandler:self];
+    NSLog(@"%@",parser);
+	
+}
+
+-(void)searchResult:(NSDictionary*)dictionary
+{
+    NSLog(@"%@",dictionary);
+    NSString *str=[dictionary valueForKey:@"msg"];
+    NSString *str1=[NSString stringWithFormat:@"Username or Password is invalid"];
+    if([str isEqualToString:str1])
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Try Again" message:@"Wrong username or password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil ];
+        [alert show];
+    }
+            
+    else
+    {
+        NSString *str=[dictionary valueForKey:@"uid"];
+        [[NSUserDefaults standardUserDefaults] setValue:str forKey:@"user_id"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        PlannerAppViewController *plan=[[PlannerAppViewController alloc]initWithNibName:@"PlannerAppViewController" bundle:nil];
+        [self.navigationController pushViewController:plan animated:YES];
+    }
+
+}	
+
+-(IBAction)ClickOnLogin:(id)sender
+{
+    [self JSON];
+    
+}
+-(IBAction)ClickOnRegister:(id)sender
+{
+    RegisterPage *reg=[[RegisterPage alloc] initWithNibName:@"RegisterPage" bundle:nil];
+    [self.navigationController pushViewController:reg animated:YES];
+    
+}
+-(IBAction)ClickOnFacebook:(id)sender
+{
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Overriden to allow any orientation.
+    return YES;
+}
+
+
+- (void)didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc. that aren't in use.
+}
+
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+@end

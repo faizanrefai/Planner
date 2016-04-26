@@ -1,0 +1,168 @@
+//
+//  Settings.m
+//  PlannerApp
+//
+//  Created by Openxcell on 2/10/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "Settings.h"
+#import "SyncSubView.h"
+#import "PlannerAppAppDelegate.h"
+#import "LocationsAlerts.h"
+@implementation Settings
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.title=@"Settings";
+    // Do any additional setup after loading the view from its nib.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    appdel=(PlannerAppAppDelegate *)[[UIApplication sharedApplication]delegate ];
+}
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    // Return the number of sections.
+    return 6;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    if(section==3){
+        return 2;
+    }
+    // Return the number of rows in the section.
+    else
+    return 1;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section==3){
+        return @"Sorting";
+        //return @"Last Up";
+    }
+    else{
+        return @"";
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Configure the cell...
+    if(indexPath.section==0){
+        cell.textLabel.text=@"Sync Settings";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    if(indexPath.section==1){
+        cell.textLabel.text=@"Tab Order";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==2){
+        cell.textLabel.text=@"Location Alerts";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==3){
+        if(indexPath.row==0){
+            cell.textLabel.text=@"Task Setting by Priority control";
+            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+            cell.accessoryView = switchview;
+            [switchview release];
+
+            
+        }
+        if(indexPath.row==1){
+            cell.textLabel.text=@"Task Setting by Status control";
+            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+            cell.accessoryView = switchview;
+            [switchview release];
+        }
+        
+    }
+    if(indexPath.section==4){
+        cell.textLabel.text=@"Background Colour";
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    }
+    if(indexPath.section==5){
+        cell.textLabel.text=@"Push Notification";
+        UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+        cell.accessoryView = switchview;
+        [switchview release];
+
+    }
+    return cell;
+}
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+    if(indexPath.section==0 || indexPath.section==4){
+        if(indexPath.section==4)
+            appdel.isColor=TRUE;
+        else
+            appdel.isColor=FALSE;
+        SyncSubView *objSub=[[SyncSubView alloc]initWithNibName:@"SyncSubView" bundle:nil ];
+        [self.navigationController pushViewController:objSub animated:YES];
+        [objSub release];
+    }
+	if(indexPath.section==1){
+        TabOrderController *objTab=[[TabOrderController alloc]initWithNibName:@"TabOrderController" bundle:nil];
+        [self.navigationController pushViewController:objTab animated:YES];
+        [objTab release];
+    }
+	
+    if(indexPath.section==2){
+        LocationsAlerts *objLocationAlert=[[LocationsAlerts alloc]initWithNibName:@"LocationsAlerts" bundle:nil];
+        [self.navigationController pushViewController:objLocationAlert animated:YES];
+        [objLocationAlert release];
+    }
+     
+     
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+	return YES;
+}
+
+@end

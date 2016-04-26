@@ -1,0 +1,17 @@
+//
+//  AvailabilityPopView.h
+//  PlannerApp
+//
+//  Created by openxcell tech.. on 2/11/12.
+//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+
+@interface AvailabilityPopView : UITableViewController
+{
+	NSMutableArray *array;
+}
+
+@end
